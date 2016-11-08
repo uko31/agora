@@ -1,0 +1,7 @@
+<h3 class="w3-text-blue">This is my Agora homepage</h3>
+<p>
+	<a class="w3-btn w3-blue" href="/#/add-ccx">Add a CCX</a>
+</p>
+<ul class="w3-ul w3-small">
+	<li ng-repeat="c in ccx | orderBy: 'ccx'">{{c.ccx}}</li>
+</ul>

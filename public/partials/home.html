@@ -3,5 +3,5 @@
 	<a class="w3-btn w3-blue" href="/#/add-ccx">Add a CCX</a>
 </p>
 <ul class="w3-ul w3-small">
-	<li ng-repeat="c in ccx | orderBy: 'ccx'">{{c.ccx}}</li>
+	<li ng-repeat="c in ccx | orderBy: 'ccx'"><a href="/#/edit-ccx/:id">{{c.ccx}}</a></li>
 </ul>

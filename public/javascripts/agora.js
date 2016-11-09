@@ -4,39 +4,105 @@ app.config(['$routeProvider', function($routeProvider){
 	$routeProvider
 		.when('/', {
 			templateUrl: 'partials/home.html',
-			controller: 'ccxCtrl'
+			controller: 'applicationsCtrl'
 		})
-		.when('/add-ccx', {
+		.when('/application/add', {
 			templateUrl: 'partials/ccx-form.html',
-			controller: 'addCCXCtrl'
+			controller: 'addApplicationCtrl'
+		})
+		.when('/application/edit/:id', {
+			templateUrl: 'partials/ccx-form.html',
+			controller: 'editCCXCtrl'
+		})
+		.when('/application/trash/:id', {
+			templateUrl: 'partials/ccx-delete.html',
+			controller: 'deleteCCXCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
-		});
+		}
+	);
 }]);
 
-app.controller('ccxCtrl', ['$scope', '$resource', 
-	function($scope, $resource) {
-		var ccx = $resource('/api/ccx');
+app.controller('applicationsCtrl', ['$scope', '$resource', '$routeParams', 
+	function($scope, $resource, $routeParams) {
+		var applications = $resource('/api/ccx');
 
-		ccx.query(function(ccx) {
+		applications.query( function(ccx) {
 			$scope.ccx = ccx;
-		})
+		});
 	}
-
 ]);
 
-app.controller('addCCXCtrl', ['$scope', '$resource', '$location',
+app.controller('addApplicationCtrl', ['$scope', '$resource', '$location',
 	function($scope, $resource, $location) {
 
 		$scope.save = function() {
-			var CCX = $resource('/api/ccx');
+			var applications = $resource('/api/ccx');
 
-			CCX.save(
+			applications.save(
 				$scope.ccx,
 				function() {
 					$location.path('/');
 				}
 			);			
 		};
-}]);
+
+		$scope.cancel = function() {
+			$location.path('/');
+		}
+	}
+]);
+
+app.controller('editCCXCtrl', ['$scope', '$resource', '$location', '$routeParams',
+	function($scope, $resource, $location, $routeParams) {
+		var applications = $resource(
+			'/api/ccx/:id',
+			{ id: '@_id' },
+			{ update: { method: 'PUT' } }
+		);
+
+		applications.get( 
+			{ id: $routeParams.id },
+			function(data) {
+				$scope.ccx = data;
+			}
+		);
+
+		$scope.save = function() {
+			applications.update($scope.ccx, function() {
+				$location.path('/');
+			});
+		}
+
+		$scope.cancel = function() {
+			$location.path('/');
+		}		
+	}
+]);
+
+app.controller('deleteCCXCtrl', ['$scope', '$resource', '$location', '$routeParams',
+	function($scope, $resource, $location, $routeParams) {
+		var applications = $resource(
+			'/api/ccx/:id',
+			{ id: '@_id' }
+		);
+
+		applications.get( 
+			{ id: $routeParams.id },
+			function(data) {
+				$scope.ccx = data;
+			}
+		);
+
+		$scope.delete = function() {
+			applications.delete({ id: $routeParams.id }, function() {
+				$location.path('/');
+			});
+		}
+
+		$scope.cancel = function() {
+			$location.path('/');
+		}
+	}
+]);

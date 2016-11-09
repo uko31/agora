@@ -1,18 +1,19 @@
-<h3 class="w3-text-blue">Add a CCX</h3>
+<h3 class="w3-text-blue">Application</h3>
 <form class="w3-container w3-small">
 
 	<p>
-		<label class="w3-label">CCX</label>
-		<input class="w3-input" type="text" ng-model="ccx.ccx"></input>
+		<label class="w3-label w3-text-blue">CCX</label>
+		<input class="w3-input" type="text" ng-model="ccx.ccx" placeholder="Application's CCX"/>
 	</p>
 	<p>
-		<label class="w3-label">Name</label>
-		<input class="w3-input" type="text" ng-model="ccx.name"></input>
+		<label class="w3-label w3-text-blue">Name</label>
+		<input class="w3-input" type="text" ng-model="ccx.name"  placeholder="Application's Name (optionale)"/>
 	</p>
-	<input class="w3-btn w3-blue" type="button" value="save" ng-click="save()"></input>
-
+	<button class="w3-btn w3-blue w3-round w3-border" ng-click="save()">
+		Save the Application
+	</button>
+	<button class="w3-btn w3-light-grey w3-round w3-border" ng-click="cancel()">
+		Nope, never mind
+	</button>
 </form>
 
-<pre>
-	{{ccx}}
-</pre>

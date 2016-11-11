@@ -14,11 +14,24 @@
 		<div ng-repeat="socle in socles | orderBy: 'name'">
 			<input class="w3-check" type="checkbox" ng-model="application.socles[socle.name]"> {{socle.name}}
 		</div>
-	</p>	
+	</p>
+	<p ng-show="application.notes">
+		<label class="w3-label w3-text-green">Notes sur l'application</label> 
+		<button class="w3-btn w3-light-grey w3-round w3-border" ng-click="add_note()"> 
+			<i class="fa fa-plus"> Ajouter une note</i>
+		</button>
+		<ul class="w3-ul w3-border w3-small">
+			<li ng-repeat="note in application.notes" class="w3-{{note.color}}">
+				<a href="/#/notes/edit/{{application._id}}">{{note.title}}</a> <i class="fa fa-pencil w3-tiny"> {{note.text | limitTo: 50}}</i>
+			</li>
+		</ul>
+	</p>
+
 	<button class="w3-btn w3-green w3-round w3-border" ng-click="save()">
 		Sauvegarder l'application
 	</button>
 	<button class="w3-btn w3-light-grey w3-round w3-border" ng-click="cancel()">
 		Finalement, non...
 	</button>
+
 </form>

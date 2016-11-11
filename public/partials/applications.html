@@ -1,0 +1,46 @@
+<table class="w3-table w3-border w3-bordered w3-hoverable w3-striped w3-small">
+
+	<tr class="w3-green w3-center">
+		<th colspan="4"><h4><b>Gestion des Applications</b></h4></th>
+	</tr>
+
+	<tr class="w3-grey">
+		<th colspan="2">
+			<div style="width: 100px" class="w3-third">
+				<input class="w3-input w3-tiny w3-border w3-round" maxlength="3" placeholder="CCX" ng-model="filter"/>
+			</div>
+		</th>
+		<th colspan="2">
+			<a class="w3-btn w3-light-grey w3-round w3-border w3-small" href="/#/applications/add">
+				<i class="fa fa-plus"></i> Ajouter une Application
+			</a>
+		</th>
+	</tr>
+
+	<tr class="w3-green">
+		<th>ccx</th>
+		<th>nom</th>
+		<th>socles</th>
+		<th></th>
+	</tr>
+
+
+	<tr ng-repeat="application in applications | orderBy: 'ccx' | filter: {ccx: filter}">
+		<th>
+			<a href="/#/applications/edit/{{application._id}}">{{application.ccx}}</a>
+		<td>{{application.name}}</td>
+		<td>
+			<span ng-repeat="(socle, show) in application.socles">
+				<span ng-show="{{show}}">
+					<a href="/#/socles">{{socle}}</a> 
+				</span>
+			</span>
+		</td>
+		<td>
+			<a href="/#/applications/delete/{{application._id}}" class="">
+				<span class="w3-text-red fa fa-trash"></span>
+			</a> 
+			</td>
+	</tr>
+
+</table>

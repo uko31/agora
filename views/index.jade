@@ -1,5 +1,13 @@
 extends layout
 
 block content
-	div(class='w3-container')
+	ul(class="w3-navbar w3-blue")
+		li(class='w3-dark-grey')
+			a(href="#") Agora
+		li
+			a(href="/#/applications") Applications
+		li
+			a(href="/#/socles") Socles
+
+	div(class='w3-container-padding w3-margin')
 		div(ng-view)

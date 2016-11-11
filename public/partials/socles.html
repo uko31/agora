@@ -1,0 +1,39 @@
+<table class="w3-table w3-border w3-bordered w3-hoverable w3-striped w3-small">
+
+	<tr class="w3-orange w3-center">
+		<th colspan="4"><h4><b>Gestion des Socles</b></h4></th>
+	</tr>
+
+	<tr class="w3-grey">
+		<th colspan="2">
+			<div style="width: 200px" class="w3-third">
+				<input class="w3-input w3-tiny w3-border w3-round" maxlength="32" placeholder="Socle" ng-model="filter"/>
+			</div>
+		</th>
+		<th colspan="2" align="right">
+			<a class="w3-btn w3-light-grey w3-round w3-border w3-small" href="/#/socles/add">
+				<i class="fa fa-plus"></i> Ajouter un Socle
+			</a>
+		</th>
+	</tr>
+
+	<tr class="w3-orange">
+		<th>nom</th>
+		<th>description</th>
+		<th></th>
+	</tr>
+
+
+	<tr ng-repeat="socle in socles | orderBy: 'name' | filter: {name: filter}">
+		<th>
+			<a href="/#/socles/edit/{{socle._id}}">{{socle.name}}</a>
+		</th>
+		<td>{{socle.description}}</td>
+		<td class="w3-center">
+			<a href="/#/socles/delete/{{socle._id}}">
+				<span class="w3-text-red fa fa-trash"></span>
+			</a> 
+		</td>
+	</tr>
+
+</table>

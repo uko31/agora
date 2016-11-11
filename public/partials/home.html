@@ -1,23 +1,5 @@
-<h3 class="w3-text-blue">Applications</h3>
-
-<div class="w3-row-padding">
-	<div style="width: 100px" class="w3-third">
-		<input class="w3-input w3-small" maxlength="3" placeholder="CCX" ng-model="filter"/>
-	</div>
-	<div class="w3-rest">
-		<a class="w3-btn w3-blue w3-round w3-border w3-small" href="/#/application/add">
-			<i class="fa fa-plus"></i> Add a CCX
-		</a>
-	</div>
-</div>
-<ul class="w3-ul w3-small">
-	<li ng-repeat="c in ccx | orderBy: 'ccx' | filter: {ccx: filter}">
-		<a href="/#/application/trash/{{c._id}}" class="">
-			<span class="fa fa-remove"></span>
-		</a> 
-		<a href="/#/application/edit/{{c._id}}">
-			{{c.ccx | uppercase}}
-		</a> 
-		({{c.name}})
-	</li>
+<ul class="w3-navbar w3-blue">
+  <li><a href="#">Agora</a></li>
+  <li><a href="/#/applications/">Applications</a></li>
+  <li><a href="/#/socles/">Socles</a></li>
 </ul>

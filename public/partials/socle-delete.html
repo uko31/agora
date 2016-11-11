@@ -1,0 +1,20 @@
+
+<h3 class="w3-text-red">Supprimer le socle</h3>
+<form class="w3-container w3-small">
+
+	<p>
+		<label class="w3-label w3-text-red">Nom du socle</label>
+		<input class="w3-input w3-light-grey" type="text" ng-model="socle.name" readonly></input>
+	</p>
+	<p>
+		<label class="w3-label w3-text-red">Description</label>
+		<input class="w3-input w3-light-grey" type="text" ng-model="socle.description" readonly></input>
+	</p>
+	<button class="w3-btn w3-red w3-round w3-border" ng-click="delete()">
+		Supprimer le socle (définitif)
+	</button>
+	<button class="w3-btn w3-light-grey w3-round w3-border" ng-click="cancel()">
+		Finalement, non...
+	</button>
+
+</form>

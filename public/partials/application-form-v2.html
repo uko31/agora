@@ -1,0 +1,141 @@
+<table class="w3-table w3-border w3-bordered w3-hoverable w3-small">
+	<!-- Titre du formulaire -->
+	<tr>
+		<th class="w3-center w3-blue" colspan="2">
+			<h4>Application</h4>
+		</th>
+	</tr>
+
+	<!-- Saisie du code de l'application => application.ccx -->
+	<tr>
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">Code</label>
+		</th>
+		<td>
+			<input class="w3-input w3-border w3-round" type="text" ng-model="application.ccx" 
+						 placeholder="Code de l'application (ccx)"/>
+		</td>
+	</tr>
+
+	<!-- Saisie du nom de l'application => application.name -->
+	<tr>
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">Nom</label>
+		</th>
+		<td>
+			<input class="w3-input w3-border w3-round" type="text" ng-model="application.name" 
+						 placeholder="Nom de l'application (mega)"/>
+		</td>
+	</tr>
+
+	<!-- Saisie des canaux de distribution de l'application => application.canaux -->
+	<tr>
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">STMC</label>
+		</th>
+		<td>
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.canaux['SFCF']"> Canal SFCF <br>
+			<input class="w3-check" type="checkbox" 
+						 ng-model="application.canaux['Guichet']"> Canal Guichet <br>
+			<input class="w3-check" type="checkbox" 
+						 ng-model="application.canaux['Cheops']"> Canal CHEOPS <br>
+			<input class="w3-check" type="checkbox" 
+						 ng-model="application.canaux['Extranet']"> Canal Extranet <br>
+			<input class="w3-check" type="checkbox" 
+						 ng-model="application.canaux['Internet']"> Canal Internet <br>
+			<input class="w3-check" type="checkbox" 
+						 ng-model="application.canaux['Transverse']"> Canal Transverse <br>
+		</td>
+	</tr>
+
+	<!-- Saisie du socle sur lequel est installé l'application => application.socle -->
+	<tr>
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">Socle</label>
+		</th>
+		<td class="w3-small">
+			<input class="w3-radio" type="radio" 
+						 ng-model="application.socle" value="STMC"/> STMC <br>
+			<input class="w3-radio" type="radio" 
+						 ng-model="application.socle" value="STOM"/> STOM <br>
+			<input class="w3-radio" type="radio" 
+			       ng-model="application.socle" value="CONCERTO"/> CONCERTO <br>
+		</td>
+	</tr>
+
+	<tr ng-show="application.socle=='STMC'">
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">STOM</label>
+		</th>
+		<td>
+			Options propres aux applications STMC
+		</td>
+	</tr>
+
+	<tr ng-show="application.socle=='STOM'">
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">STOM</label>
+		</th>
+		<td>
+			<label class="w3-label w3-text-blue">Espaces de déploiement STOM</label> <br>
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.espaces['CC3R2']"> CC3R2 
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.espaces['CC3R3']"> CC3R3 
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.espaces['CC3R4']"> CC3R4 
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.espaces['CC3R5']"> CC3R5 
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.espaces['STOME1']"> STOME1 
+			<input class="w3-check" type="checkbox"
+						 ng-model="application.espaces['STOME2']"> STOME2 
+
+			<br>
+
+			<label class="w3-label w3-text-blue">Type d'application STOM</label> <br>
+			<input class="w3-radio" type="radio" ng-model="application.appType" 
+						 value="Application Canal"/> Application Canal 
+			<input class="w3-radio" type="radio" ng-model="application.appType" 
+						 value="Système d'assemblage"/> Système d'assemblage 
+			<input class="w3-radio" type="radio" ng-model="application.appType" 
+						 value="Application Replatforming"/> Application Replatforming 
+
+			<br>
+			<label class="w3-label w3-text-blue">Jonction</label> <br>
+			<input class="w3-radio" type="radio" ng-model="application.junction" 
+						 value="yes"/> Oui
+			<input class="w3-radio" type="radio" ng-model="application.junction" 
+						 value="bascule"/> Oui (Bascule)
+			<input class="w3-radio" type="radio" ng-model="application.junction" 
+						 value="no"/> Non
+
+		</td>
+	</tr>
+
+	<tr ng-show="application.socle=='CONCERTO'">
+		<th style="width:100px">
+			<label class="w3-label w3-text-blue">CONCERTO</label>
+		</th>
+		<td>
+			Cette option n'est pas encore implémentée.
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+		</td>
+		<td>
+			<button class="w3-btn w3-blue w3-round w3-border" ng-click="save()">
+				Sauvegarder l'application
+			</button>
+			<button class="w3-btn w3-light-grey w3-round w3-border" ng-click="cancel()">
+				Finalement, non...
+			</button>
+		</td>
+	</tr>
+
+</table>
+
+<p>{{application}}</p>

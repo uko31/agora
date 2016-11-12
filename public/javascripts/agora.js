@@ -10,7 +10,7 @@ app.config(['$routeProvider', function($routeProvider){
 			controller: 'applicationsListCtrl'
 		})
 		.when('/applications/add', {
-			templateUrl: 'partials/application-form.html',
+			templateUrl: 'partials/application-form-v2.html',
 			controller: 'applicationsAddCtrl'
 		})
 		.when('/applications/edit/:id', {

@@ -1,0 +1,39 @@
+<div class="w3-container l4 s2"> </div>
+
+<div class="w3-container l4 s8">
+	<table class="w3-table">
+
+		<tr class="w3-blue w3-center">
+			<th><h4><b>Login</b></h4></th>
+		</tr>
+
+		<tr class="w3-center">
+			<td>
+				<input type="text" class="w3-input w3-border w3-round" ng-model="user.username"
+							 placeholder="Username">
+			</td>
+		</tr>
+
+		<tr class="w3-center">
+			<td>
+				<input type="password" class="w3-input w3-border w3-round" ng-model="user.password"
+							 placeholder="Password">
+			</td>
+		</tr>
+
+		<tr class="w3-center">
+			<td>
+				<button class="w3-btn w3-border w3-round w3-blue" ng-click="login()">
+					Login
+				</button>
+			</td>
+		</tr>
+
+	</table>
+</div>
+
+<div class="w3-container l4 s2"> </div>
+
+<span class="fa fa-{{icon}}"></span>
+
+{{info}}

@@ -13,7 +13,6 @@ router.get('/', function(req, res) {
 		res.json(ccx);
 
 	});
-
 });
 
 router.post('/', function(req, res) {

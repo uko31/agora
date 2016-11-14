@@ -4,14 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
+var flash = require('connect-flash');
+var session = require('express-session');
 
 var index        = require('./routes/index');
 var users        = require('./routes/users');
-//var ccx          = require('./routes/ccx');
-var applications = require('./routes/applications');
-var socles       = require('./routes/socles');
 
 var app = express();
+
+var applications = require('./routes/applications');
+var socles       = require('./routes/socles');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,8 +28,20 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// required for passport
+app.use(session(
+	{
+		secret: 'lematinjemeleveetjejouedelatrompette',
+		resave: false,
+  	saveUninitialized: true
+	}
+)); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 app.use('/'                , index);
-app.use('/users'           , users);
+app.use('/api/users'       , users);
 app.use('/api/applications', applications);
 app.use('/api/socles'      , socles);
 
